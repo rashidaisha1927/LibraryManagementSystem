@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Library management dashboard" />
+    <title>Bookly — Library Management</title>
+  </head>
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <a class="logo" href="#"><span class="logo-icon">B</span><span>bookly</span></a>
+        <nav aria-label="Main navigation">
+          <p class="nav-label">MAIN MENU</p>
+          <a href="#dashboard" class="nav-item active"><span>▦</span> Dashboard</a>
+          <a href="#borrowing" class="nav-item"><span>↗</span> Borrowings <b id="nav-book-count">0</b></a>
+          <a href="#add-book" class="nav-item"><span>＋</span> Add Book</a>
+          <a href="#catalog" class="nav-item"><span>▤</span> Book Catalog</a>
+          <a href="#members" class="nav-item"><span>♙</span> Members</a>
+          <p class="nav-label nav-label-bottom">MANAGEMENT</p>
+          <a href="#statistics" class="nav-item"><span>◔</span> Statistics</a>
+          <a href="#settings" class="nav-item"><span>⚙</span> Settings</a>
+        </nav>
+        <div class="sidebar-promo"><span class="sparkle">✦</span><strong>Library tip</strong><p>Every book has a reader waiting for it.</p></div>
+        <button class="logout" type="button"><span>⇥</span> Log out</button>
+      </aside>
+
+      <main id="dashboard" class="content">
+        <header class="content-header">
+          <div><p class="breadcrumb">LIBRARY / <b>DASHBOARD</b></p><h1>Good morning, Ayesha <span>👋</span></h1><p class="subheading">Here’s what’s happening in your library today.</p></div>
+          <div class="header-actions"><button class="notification" type="button" aria-label="Notifications">♢<i></i></button><div class="admin-avatar">A</div><div class="admin-name"><strong>Ayesha Khan</strong><span>Librarian</span></div><span class="chevron">⌄</span></div>
+        </header>
+
+        <section class="stats" aria-label="Library statistics">
+          <article class="stat-card purple"><div class="stat-icon">▤</div><div><p>Total Books</p><strong>1,240</strong><span class="up">↑ 12% <small>vs last month</small></span></div></article>
+          <article class="stat-card orange"><div class="stat-icon">↗</div><div><p>Books Borrowed</p><strong id="stat-borrowed">0</strong><span class="up">↑ 8% <small>vs last month</small></span></div></article>
+          <article class="stat-card blue"><div class="stat-icon">♙</div><div><p>Active Members</p><strong>186</strong><span class="up">↑ 4% <small>vs last month</small></span></div></article>
+          <article class="stat-card green"><div class="stat-icon">↩</div><div><p>Books Returned</p><strong>87</strong><span class="up">↑ 16% <small>vs last month</small></span></div></article>
+        </section>
+
+        <section id="add-book" class="add-card" aria-labelledby="form-title">
+          <div class="section-heading"><div><p>QUICK ACTION</p><h2 id="form-title">Register a new borrowing</h2></div><button id="cancel-edit" class="text-button hidden" type="button">Cancel edit</button></div>
+          <form id="book-form"><div class="form-grid"><label>Book title<input id="book-name" name="bookName" type="text" placeholder="Enter book title" required /></label><label>Borrowed by<input id="book-borrower" name="bookBorrower" type="text" placeholder="Enter member name" required /></label><label>Price (Rs.)<input id="book-price" name="price" type="number" min="0" step="0.01" placeholder="0.00" required /></label><button id="submit-button" class="primary-button" type="submit">Add Borrowing <span>→</span></button></div></form>
+        </section>
+
+        <section id="borrowing" class="loans-card" aria-labelledby="books-title">
+          <div class="section-heading table-heading"><div><p>RECENT ACTIVITY</p><h2 id="books-title">Current borrowings</h2><span id="book-count">Loading books…</span></div><div class="table-tools"><button class="filter-button" type="button">☷ Filter</button><button id="refresh-button" class="refresh-button" type="button">↻ Refresh</button></div></div>
+          <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
+          <div class="table-wrap"><table><thead><tr><th>BOOK DETAILS</th><th>BORROWED BY</th><th>PRICE</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="books-body"></tbody></table></div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
